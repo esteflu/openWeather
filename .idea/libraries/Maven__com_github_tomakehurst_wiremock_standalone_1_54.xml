@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.github.tomakehurst:wiremock:standalone:1.54">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/tomakehurst/wiremock/1.54/wiremock-1.54-standalone.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/tomakehurst/wiremock/1.54/wiremock-1.54-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/tomakehurst/wiremock/1.54/wiremock-1.54-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
