@@ -2,6 +2,7 @@ package client;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.junit.Before;
@@ -46,10 +47,10 @@ public class OpenWeatherClientTest {
     @Test
     public void get_real_weather_forecast_in_gothenburg() throws IOException, JSONException {
         //Given
-        openWeatherClient = new OpenWeatherClient(realURL, appid, new DefaultHttpClient());
+        openWeatherClient = new OpenWeatherClient(realURL, appid, HttpClientBuilder.create().build());
 
         //When
-        WeatherResponse weatherAtCity = openWeatherClient.getWeatherAtCity(GOTH_CITY_ID);
+        WeatherResponse weatherAtCity = openWeatherClient.getWeatherAtCity(GOTH_CITY_ID, true);
 
         //Then
         assertEquals(expected.length(), weatherAtCity.getNames().length());
@@ -62,10 +63,10 @@ public class OpenWeatherClientTest {
     public void get_stubbed_weather_forecast_in_gothenburg() throws IOException, JSONException {
         //Given
         configureStubServer();
-        openWeatherClient = new OpenWeatherClient(stubURL, appid, new DefaultHttpClient());
+        openWeatherClient = new OpenWeatherClient(stubURL, appid, HttpClientBuilder.create().build());
 
         //When
-        WeatherResponse weatherAtCity = openWeatherClient.getWeatherAtCity(GOTH_CITY_ID);
+        WeatherResponse weatherAtCity = openWeatherClient.getWeatherAtCity(GOTH_CITY_ID, false);
 
         //Then
         assertEquals(expected.length(), weatherAtCity.getNames().length());
